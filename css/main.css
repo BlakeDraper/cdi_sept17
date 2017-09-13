@@ -1,0 +1,50 @@
+.publicHighlight {
+	color: green ;
+}
+
+.internalHighlight{
+	color:orange;
+}
+
+
+.left {
+    float: left;
+    min-height: 450px;
+    width:70%;
+
+}
+
+
+.right {
+	float:right;
+    min-height: 450px;
+    width:30%;
+
+}
+
+.title {
+    font-size: x-large
+}
+
+.list {
+    font-size: 12pt;
+}
+
+.no-margin{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-left: 0x;
+}
+.initCase{
+    text-transform: initial;
+    
+}
+
+html.dimbg .slide-background {
+    opacity: 0.05 !important;
+}
+
+html.dimbg2 .slide-background {
+    opacity: 0.2 !important;
+}

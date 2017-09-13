@@ -1,0 +1,694 @@
+<!doctype html>
+<html  lang="en">
+   <head>
+        <meta charset="utf-8">
+
+        <title>Coastal GeoTools 2017 Presentation - Flood Event Viewer</title>
+
+        <meta name="description" content="Presentation for Coastal GeoTools 2017 - Flood Event Viewer">
+        <meta name="author" content="Blake Draper">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+        <link rel="stylesheet" href="css/theme/black.css" id="theme">
+        <link rel="stylesheet" href="css/main.css">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section  data-background-image="images/fevcap.PNG" data-background-size="contain" data-state="dimbg2">
+                    <img height="150" data-src="images/USGSlogo_tag_white_600w.gif" alt="USGS logo"  style="margin:30px;background:none;border:none;box-shadow:none;">
+                    <br>
+                    <h3>Event-based Flood Data Collection and Dissemination</h2>
+                    <p>The USGS Flood Event Viewer and Short-Term Network database</p>
+                    <p>
+                        <small>CDI Monthly Meeting | September 13th, 2017<br>Presented by <a href="https://www.linkedin.com/in/blakedraper/">Blake Draper</a>, Software Developer<br><a href="https://github.com/usgs-wim">USGS Web Informatics and Mapping (WiM)</a><br></small>
+                        <br><img height="70" data-src="images/wim_hor_abbr_light.png" alt="WiM logo"  style="margin:30px;background:none;border:none;box-shadow:none;">
+                    </p>
+                    <aside class="notes">
+                        <ul>
+                            <li> Here to talk about tools that WiM has developed to support USGS flood data collection. </li>
+                            <li>Talk is about the Flood Event Viewer, but first need to provide context.</li>
+                            <li> FEV is part of the STN ecosystem, and would not exist without it. </li>
+                        <ul>
+                    </aside>
+                </section>
+
+                <section  data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg">
+                    <h2>Short-Term Network (STN)</h2>
+                    <h6>What is it?</h6>
+                    <div style=" width:100%; margin:0 auto;">
+                        <div  style="float:left; width:30%;"> <img  data-src="images/stn_sites.PNG" alt="STN sites network">   </div>
+                        <div style="float:left; width:70%;">
+                            <ul>
+                                <li><p class="fragment" style="padding-left: 5px;">a system for collection, management and dissemination of USGS flood data </p></li>
+                            <li><p class="fragment">a network of sites where sensors are deployed </p> </li>
+                            </ul>   
+                            <p class="fragment">FEV is the <span class="fragment highlight-green">public</span> data viewing tool for the STN database</p>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        <ul>
+                            <li>STN is a system (database and suite of products) that collects, manages and disseminates data during and after hazardous flooding events</li>
+                            <li>also, it is literally a network of sites where sensors are deployed</li>
+                            <li>FEV is the Flood Event Viewer and it is the public data viewing tool for the STN database</li>
+                        <ul>
+                    </aside>
+                    </section>
+
+                 <section  data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg">
+                    <h2>Short-Term Network (STN)</h2>
+                    <h6>What's with the name?</h6>
+                    <ul>
+                        <li><p class="fragment"><span style="font-weight: bold">short-term</span>, temporary data sensors </p></li>
+                        <li><p class="fragment">supplements USGS long-term station network</p></li>
+                    </ul>
+                    <aside class="notes">
+                         <ul>
+                            <li>The USGS Streamgages, National Groundwater Well Network and the Water Quality Network form a set of fixed, permanent stations where USGS collects water data </li>
+                            <li>STN supports dense, short-term data collection from temporary sensors</li>
+                            <li>The Short-Term Network of sites is deployed in between our Long-Term station network, to supplement data needs for large flooding events.</li>
+                        <ul>
+                    </aside>
+                </section>
+
+                <section data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg">
+                    <h2>Short-Term Network (STN)</h2>
+                    <h6>Why is it needed?</h6>
+                    <ul>
+                        <li><p class="fragment">standardize data collection process</p></li>
+                        <li><p class="fragment">new repository for historical high-water marks</p></li>
+                    </ul>
+                    <p class="fragment fade-up"><i>...has evolved into a suite of products</i></p>
+                     <aside class="notes">
+                         <ul>
+                            <li>STN began as a pilot program to support the flood data collection efforts of the Water Science Centers - there was a need for a tool to make this process easier and more standard</li>
+                            <li>Another goal was to provide a long-term repository for historical high-water marks which would be accessible to outside partners such as ASFPM (among many others)</li>
+                            <li>This pilot program has gained momentum and evolved into an indispensable suite of products that promote good data collection practices, data management and dissemination to partners and the public</li>
+                        <ul>
+                    </aside>
+                </section>
+
+                <section >
+                    <h6>The Short-Term Network Universe</h6>
+                     <img height="600" data-src="images/STN_universe_ext.png" alt="STN universe">
+                      <aside class="notes">
+                         <ul>
+                            <li>Public realm and internal realm</li>
+                            <li>All apps work through the web services layer</li>
+                        <ul>
+                    </aside>
+                </section>
+
+                 <section data-background-image="images/stn_map.PNG" data-background-size="contain" data-state="dimbg2">
+                    <h2>STNWeb <span class="internalHighlight">(Internal)</span></h2>
+                    <label>Internal data management application</label>
+                    <img height="325" data-src="images/stn_site.PNG" alt="STNWeb site">
+                    <img height="325" data-src="images/stn_hwm.PNG" alt="STNWeb HWM">
+                     <aside class="notes">
+                         <ul>
+                            <li>STNWeb is the internal data management application</li>
+                            <li>where USGS staff records sensor metadata, uploads data files and records HWM elevations</li>
+                            <li>Unified the data stream and replaced emailing of excel spreadsheets with manual aggregation</li>
+                        <ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>STN Data Portal <span class="publicHighlight">(Public)</span></h2>
+                    <div>
+                        <div class="left">
+                            <img height="500" data-src="images/stnDataPortal.PNG" alt="STN data portal">
+                        </div>
+                        <div class="right">
+                            <p>Data access GUI</p>
+                            <br>
+                            <p>for casual users</p>
+                            <br>
+                            <p>sensor metadata only right now <i class="fa fa-frown-o" aria-hidden="true"></i> </p>
+                        </div>
+                    </div>
+                     <aside class="notes">
+                         <ul>
+                            <li>graphical user interface for data access</li>
+                            <li>for casual users, or who those who just need a spreadsheet</li>
+                            <li>sensor data files not included at this time</li>
+                        <ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>STN Web Services <span class="publicHighlight">(Public)</span></h2>
+                    <div>
+                        <div class="left">
+                            <img height="450" data-src="images/stnServicesDocs.PNG" alt="STN web services documentation page">
+                        </div>    
+                        <div class="right">
+                            <p>Data access API</p>
+                            <br>
+                            <p>for power users and developers</p>
+                        </div>
+                    </div>
+                     <aside class="notes">
+                         <ul>
+                            <li>full documentation for data access API</li>
+                            <li>used by STNWeb and FEV but made available to all for easy data access</li>
+                            <li>we encourage people to leverage the web services to build their own applications that suit specific needs. </li>
+                        <ul>
+                    </aside>
+                </section>
+
+                 <section data-background-image="images/fevcap.PNG" data-background-size="contain" data-transition="slide">
+                    
+                    <div class="fragment" style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
+                        <h2>Flood Event Viewer</h2>
+                        <p>Brief History</p>
+                    </div>
+                     <aside class="notes">
+                         Now FEV. start with a brief history<br>
+                         ...FEV had a few predecessors
+                    </aside>
+                </section>
+
+                 <section data-background-image="images/ireneMapper.PNG" data-background-size="contain">
+                    <div style="background-color: rgba(0, 0, 0, 0.8); color: #fff; padding: 20px;">
+                        <p>Hurricane Irene Mapper (2011)</p>
+                    </div>
+                     <aside class="notes">
+                         <ul>
+                            <li>Proto-FEV, first of a series of  Hurricane mappers</li>
+                            <li>Issac Aug 2012</li>
+                            <li>Sandy Oct 2012</li>
+                        <ul>
+                    </aside>
+                </section>
+
+                <section data-background-image="images/stnThumbnail.PNG" data-background-size="contain" data-transition="convex">
+                    <div style="background-color: rgba(0, 0, 0, 0.8); color: #fff; padding: 20px; width: 800px; margin:0 auto;">
+                        <h2>Flood Event Viewer 1.0</h2>
+                        <p>born ~2012</p>
+                        <p>originally 'STN Public'</p>
+                    </div>
+                     <aside class="notes">
+                         <ul>
+                            <li>Requirements were a moving target. Priorities were always shifting and features being added in a way that  the foundation was never strong. </li>
+                            <li>Relied on redundant map services which are an additional point of failure and infrastructure to maintain.</li>
+                        <ul>
+                    </aside>
+                </section>
+
+                <section data-background-image="images/fevcap.PNG" data-background-size="contain" data-transition="slide">
+                    <div style="background-color: rgba(0, 0, 0, 0.8); color: #fff; padding: 20px;">
+                        <h2>Flood Event Viewer 2.0</h2>
+                        <p>developed 2016, released October 2016</p>
+                    </div>
+                     <aside class="notes">
+                         <ul>
+                            <li>interesting story behind the release, for later</li>
+                            <li>...next I want to talk about the data in FEV</li>
+                        <ul>
+                    </aside>
+                </section>
+
+                <section data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg">
+                    <h2>Event-Centrism in FEV</h2>
+                    <img height="300" data-src="images/selectEvt_dropdwn.PNG" alt="FEV screenshot">
+                    <p>all data gets associated with an event </p>
+                    <p class="fragment">Water Science Centers and the press want event-focused map</p>
+
+                     <aside class="notes">
+                         <ul>
+                            <li>The STN universe promotes the event as the central organizing concept. All sensor deployments, peak summaries and HWMs are associated with an event. </li>
+                            <li>Both the Water Science Centers and the press generally want an event-focused map during an event</li>
+                            <li>STN is designed to be event-centric from the bottom up. </li>
+                        <ul>
+                    </aside>
+                </section>
+
+                <section data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg"> 
+                    <div style="float:left; width:33.3%">
+                        <h3><span style="text-transform:initial">Real-time</span></h3>
+                        <ul style="font-size:24pt" class="fragment">
+                                <span style=" display:inline-block;">
+                                    <img src="images/nwis.png" style="margin:0;background:none;border:none;box-shadow:none;"></img>
+                                </span> Real-time Stream Gage<br>
+
+                                <span style=" display:inline-block;">
+                                    <img src="images/rdg.png" style="margin:0;background:none;border:none;box-shadow:none;"></img>
+                                </span> Rapid Deployment Gage<br>
+                        </ul>
+                    </div>
+                    <div style="float:left; width:33.3%">
+                         <h3><b><span style="text-transform:initial; font-weight:bold">Observed</b></span></h3>
+                         <div class="fragment">
+                             <p>Sensors</p>
+                                <ul style="font-size:24pt">
+                                        <span style=" display:inline-block;">
+                                            <img src="images/baro.png" style="margin:0;background:none;border:none;box-shadow:none;"></img>
+                                        </span> Barometric Pressure<br>
+
+                                        <span style=" display:inline-block;">
+                                            <img src="images/stormtide.png" style="margin:0;background:none;border:none;box-shadow:none;"></img>
+                                        </span> Storm Tide<br>
+
+                                        <span style=" display:inline-block;">
+                                            <img src="images/met.png" style="margin:0;background:none;border:none;box-shadow:none;"></img>
+                                        </span> Meteorological<br>
+
+                                        <span style=" display:inline-block;">
+                                            <img src="images/waveheight.png" style="margin:0;background:none;border:none;box-shadow:none;"></img>
+                                        </span> Wave Height<br>
+                                </ul>
+                         </div>
+                        <br>
+                        <div class="fragment" >
+                             <p>Surveyed</p>
+                            <ul style="font-size:24pt">
+                                <span style=" display:inline-block;">
+                                        <img src="images/hwm.png" style="margin:0;background:none;border:none;box-shadow:none;"></img>
+                                </span> High-water Marks
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="float:left; width:33.3%">
+                         <h3><span style="text-transform:initial">Interpreted</span></h3>
+                        <ul style="font-size:24pt" class="fragment">
+                                <span style=" display:inline-block;">
+                                    <img src="images/peak.png" style="margin:0;background:none;border:none;box-shadow:none;"></img>
+                                </span> Peak Summary<br>
+                        </ul>
+                    </div>
+                     <aside class="notes">
+                    </aside>
+                </section>
+
+                <section data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg"> 
+                   <h2><span style="text-transform:initial">Real-time Data</span></h2>
+                   <ul>
+                        <span style=" display:inline-block;">
+                            <img src="images/nwis.png" style="margin:0;background:none;border:none;box-shadow:none;"></img>
+                        </span> Real-time Stream Gage<br>
+
+                        <span style=" display:inline-block;">
+                            <img src="images/rdg.png" style="margin:0;background:none;border:none;box-shadow:none;"></img>
+                        </span> Rapid Deployment Gage<br>
+                   </ul>
+                    <aside class="notes">
+                         Now for the real-time category...
+                         <br> illustrates the short-term vs long-term dichotomy
+                    </aside>
+                </section>
+
+                <section data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg"> 
+                   <h2> <span style="text-transform:initial">Real-time Stream Gage layer</span></h2>
+                    <div style=" width:100%; height:485px; margin:0 auto;">
+                        <div  style="float:left; width:50%;"><img data-src="images/rtLayer.PNG" alt="Real-time streamgages layer">  </div>
+                        <div style="float:left; width:50%;"><img data-src="images/streamgage.jpg" alt="Real-time streamgages layer">  </div>
+                    </div>
+                    <div style=" width:100%; margin:0 auto; "> <p style="margin:0px;" class="no-margin">uses NWIS web services</p></div>
+                     <aside class="notes">
+                         <ul>
+                            <li> Leveraging USGS NWIS (National Water Information System) data to provide a more complete picture of conditions.</li>
+                            <li>Link through to NWISWeb</li>
+                        <ul>
+                    </aside>
+                </section>
+
+                 <section data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg"> 
+                   <h2><span style="text-transform:initial">Rapid deployment gage layer</span></h2>
+                    <div style=" width:100%; height:485px; margin:0 auto;">
+                        <div  style="float:left; width:60%;"> <img  data-src="images/rdgLayer.PNG" alt="Real-time streamgages layer">   </div>
+                        <div style="float:left; width:40%;"><img data-src="images/rdg_pic.png" alt="Rapid deployment Gage">  </div>
+                    </div>
+                    <div style=" width:100%; margin:0 auto; "> <p class="no-margin" style="margin:0px;">metadata in STN - time series data in NWIS</p></div>
+                     <aside class="notes">
+                         <ul>
+                            <li> somewhat a hybrid type sensor - metadata tracked in STN DB but actual time-series data is stored in NWIS</li>
+                            <li> temporary streamgage deployed in advance of an anticipated event</li>
+                            <li> illustrates the short-term concept</li>
+                        <ul>
+                    </aside>
+                </section>
+
+                <section data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg"> 
+                   <h2><span style="text-transform:initial">Observed Data</span></h2>
+                   <p>Sensors</p>
+                   <ul>
+                        <span style=" display:inline-block;">
+                            <img src="images/baro.png" style="margin:0;background:none;border:none;box-shadow:none;"></img>
+                        </span> Barometric Pressure<br>
+
+                        <span style=" display:inline-block;">
+                            <img src="images/stormtide.png" style="margin:0;background:none;border:none;box-shadow:none;"></img>
+                        </span> Storm Tide<br>
+
+                         <span style=" display:inline-block;">
+                            <img src="images/met.png" style="margin:0;background:none;border:none;box-shadow:none;"></img>
+                        </span> Meteorological<br>
+
+                         <span style=" display:inline-block;">
+                            <img src="images/waveheight.png" style="margin:0;background:none;border:none;box-shadow:none;"></img>
+                        </span> Wave Height<br>
+                   </ul>
+                   <br>
+                   <br>
+                   <p>Surveyed</p>
+                    <span style=" display:inline-block;">
+                            <img src="images/hwm.png" style="margin:0;background:none;border:none;box-shadow:none;"></img>
+                    </span> High-water Marks
+                    <aside class="notes">
+                    </aside>
+                </section>
+
+                <section data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg">
+                        <section data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg"> 
+                            <h2> <span style="text-transform:initial">Sensor layers</span></h2>
+                            <div style=" width:100%; height:410px; margin:0 auto;">
+                                <div  style="float:left; width:75%;"> <img data-src="images/sensorLayers.PNG" alt="Sensor layers">     </div>
+                                <div style="float:left; width:25%;"><img data-src="images/sensor.jpg" alt="Storm Tide sensor ">  </div>
+                            </div>
+
+                            <div style=" width:100%; margin:0 auto; "> 
+                                <ul>
+                                    <li>Storm tide, Barometric pressure, Meteorological, Wave height</li>
+                                    <li>non-transmitting - must be deployed and retrieved</li>
+                                </ul>
+                            </div>
+                             <aside class="notes">
+                                    <ul>
+                                        <li>Storm-tide, Barometric pressure, Meteorological, Wave Height </li>
+                                        <li>non-transmitting so must be deployed and retrieved. </li>
+                                        <li>begin to appear after they have been entered in STN DB, but do not have data until they are retrieved and data files uploaded</li>
+                                         <li>overlap on map exists because of the Site-based concept of STN - re-usable sites at which sensors are deployed. In some cases multiple sensors are deployed at the same site for the same storm </li>
+                                    <ul>
+                                </aside>        
+                         </section>
+
+                        <section id="spidergif" data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg"> 
+                            <h2> <span style="text-transform:initial">Sensor layers overlap</span></h2>
+                            <p>Overlapping Marker Spiderfier for Leaflet <a href="https://github.com/jawj/OverlappingMarkerSpiderfier-Leaflet">(github/jawj)</a></p>
+                                <div>
+                                    <img height="475" data-src="images/spider.gif" alt="Spiderify demo gif">  
+                                </div>
+                                 <aside class="notes">
+                                    <ul>
+                                        <li>Overlap is handled by OverlappingMarkerSpiderfier plugin for Leaflet </li>
+                                    <ul>
+                                </aside>        
+                        </section>
+                </section>
+
+                <section data-background-image="images/sensorDataPage.PNG" data-background-size="contain"> 
+                   <div class="fragment" width="500px" style="background-color: rgba(0, 0, 0, 0.8); color: #fff; padding: 10px; width:500px; margin:0 auto;">
+                       <ul>
+                           <li >metadata</li>
+                           <li class="fragment">raw data files</li>
+                           <li class="fragment">photos</li>
+                       </ul>
+                    </div>
+                     <aside class="notes">
+                         <ul>
+                            <li>All items in observed data category have data page</li>
+                            <li>permanent, dedicated, shareable page with all the publicly available data for the sensor.</li>
+                            <li>Page includes: 1)Metadata 2)Raw data files3) Photos </li>
+                        <ul>
+                    </aside>
+                </section>
+
+                 <section data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg"> 
+                    <h2> <span style="text-transform:initial">High-water Mark layer</span></h2>
+                    <div style=" width:100%; height:400px; margin:0 auto;">
+                        <div  style="float:left; width:60%;"> <img data-src="images/hwmLayer.PNG" alt="High-water mark layer">       </div>
+                        <div style="float:left; width:40%;"><img data-src="images/hwm.jpg" alt="high-water mark">  </div>
+                    </div>
+                    <div style=" width:100%; margin:0 auto; ">  
+                        <p class="no-margin" style="margin:0px;">observed & surveyed</p>
+                            <p class="no-margin" style="margin:0px;">historic HWM effort underway</p>
+                    </div>
+
+                        <aside class="notes">
+                        <ul>
+                            <li>HWMs are observed and elevation is surveyed after waters have receded</li>
+                            <li>Effort underway to encourage upload of more historic high-water mark records - Historic HWM upload tool in the internal STNWeb application</li>
+                            <li>Historic high-water marks from events dating back as far as 1888</li>
+                        <ul>
+                    </aside>
+                </section>
+
+                <section data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg"> 
+                   <h2><span style="text-transform:initial">Interpreted Data</span></h2>
+                   <ul>
+                        <span style=" display:inline-block;">
+                            <img src="images/peak.png" style="margin:0;background:none;border:none;box-shadow:none;"></img>
+                        </span> Peak Summary<br>
+                   </ul>
+                    <aside class="notes"> 
+                    </aside>
+                </section>
+
+                <section data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg"> 
+                   <h2> <span style="text-transform:initial">Peak Summary layer</span></h2>
+                    <div>
+                        <img height="400" data-src="images/peakLayer.PNG" alt="Peak summary layer">  
+                    </div>
+                    <p class="no-margin" style="margin:0px;">calculated after the event</p>
+                    <p class="no-margin" style="margin:0px;">interpreted data - based on multiple input</p>
+                     <!--<div style="background-image: url(images/rtLayer.PNG); height: 550px;  background-repeat: no-repeat; left:50%">-->
+                      <aside class="notes">
+                         <ul>
+                            <li>Peak summaries are calculated after the event and provide the peak water level for that event at that site. Generally found where there were storm tide sensors deployed</li>
+                            <li>The peaks are the interpreted final dataset that illustrate the maximum water elevation for the chosen event - a combination of several pieces of data</li>
+                        <ul>
+                    </aside>
+                </section>
+
+                <section data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg"> 
+                  <h2>Getting Data</h2>
+                    <div>
+                        <div class="left">
+                            <img height="500" data-src="images/getdatapanel.png" alt="FEV get data panel">
+                        </div>
+                        <div class="right">
+                            <p >download CSV</p>
+                            <br>
+                            <p >get JSON</p>
+                        </div>
+                    </div>
+                        <aside class="notes">
+                            <ul>
+                            <li>Allows user to download the data they see on the map as CSV file or view the data in JSON format directly from the web services</li>
+                        <ul>
+                    </aside>
+                </section>
+
+                <section data-background="#dddddd"> 
+                    <h2>Technology Stack</h2>
+                    <p>service-oriented architecture</p>
+                     <div style="float:left; width:33.3%;">
+                          <h6 ><span style="text-transform:initial">Database</span></h6>
+                          <div class="fragment">
+                                <img src="images/postgresql-logo.png" style="margin:0;background:none;border:none;box-shadow:none; "></img>
+                          </div>   
+                    </div>
+
+                    <div style="float:left; width:33.3%;" >
+                         <h6><b><span style="text-transform:initial; font-weight:bold">Service layer</b></span></h6>
+
+                         <div class="fragment">
+                             <img src="images/asp.net.png" style="margin:0;background:none;border:none;box-shadow:none;"></img>
+                         </div>
+                    </div>
+
+                    <div style="float:left; width:33.3%">
+                         <h6 ><span style="text-transform:initial">Client</span></h6>
+                         <div class="fragment">
+                            <img src="images/leafletlogo.png" style="margin:0;background:none;border:none;box-shadow:none;"></img>
+                            <img src="images/jquery_logo1.png" style="margin:0;background:none;border:none;box-shadow:none; height:100px "></img>
+                            <img src="images/bootstraplogo.svg" style="margin:0;background:none;border:none;box-shadow:none; height:75px;"></img>
+                            <br>
+                            <img src="images/HTML5_CSS_JavaScript.png" style="margin:0;background:none;border:none;box-shadow:none;"></img>
+
+                         </div>
+                    </div>
+
+                     <aside class="notes">
+                         <ul>
+                            <li>Service oriented architecture - 3 tiers</li>
+                             <li>Client-side rendering of points using leaflet, fed by web service calls</li>
+                            <li>Started with Angular2, but learned we had adopted too early</li>
+                        <ul>
+                    </aside>
+                </section>
+
+                 <section data-background-image="images/fevcap.PNG" data-background-size="contain"> 
+                    <div style="background-color: rgba(0, 0, 0, 0.8); color: #fff; padding: 5px;width:800px; margin:0 auto;">
+                        <h2>Flood Event Viewer 2.0</h2>
+                        <p>The Release</p>
+                    </div>
+
+                    <div class="fragment" style="background-color: rgba(0, 0, 0, 0.8); color: #fff; padding: 5px; margin:10px">
+                        Original plan: late October/early November 2016
+                    </div>
+
+                     <aside class="notes">
+                         <ul>
+                            <li> Original plan: late October/early November 2016</li>
+                        <ul>
+                    </aside>
+                </section>
+                
+                <section data-background-image="images/evilMatthew.jpg" data-background-size="contain">
+                    <div class="fragment" style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 5px;">
+                        <p>USGS Storm Team activated October 3rd</p>
+                    </div>
+                     <div class="fragment" style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 5px; margin:10px">
+                       <p>FEV v2 alpha released later that day</p>
+                    </div>
+                     <div class="fragment" style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 5px; margin:10px">
+                        <p>FEV 2.0 released October 5th</p>
+                    </div>
+                     <aside class="notes">
+                         <ul>
+                            <li>then this happened</li>
+                            <li>USGS storm team activated Oct 3rd</li>
+                            <li>we did not want use the older v1 FEV as the face of the storm for the USGS </li>
+                            <li>released alpha version 2 later that day</li>
+                            <li>Accelerated the release</li>
+                        <ul>
+                    </aside>
+                </section>
+
+                <section data-background-image="images/matthew.jpg" data-background-size="contain">
+                    <div  style="background-color: rgba(0, 0, 0, 0.75); color: #fff; padding: 0px; width:600px;  margin:0 auto;">
+                        <p>Matthew arrives October 7th</p>
+                    </div>
+                     <div class="fragment" style="background-color: rgba(0, 0, 0, 0.75); color: #fff; padding: 0px; width:750px;  margin:0 auto;">
+                        <p>largest deployment since Hurricane Sandy</p>
+                    </div>
+                     <div class="fragment" style="background-color: rgba(0, 0, 0, 0.75); color: #fff; padding: 0px; width:600px;  margin:0 auto;">
+                        <p>300+ sensors</p>
+                    </div>
+                     <aside class="notes">
+                    </aside>
+                </section>
+
+                <section data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg">
+                    <h3>Success and Publicity</h3>
+                    <p class>used by USGS storm team on daily coordination calls</p>
+                    <div class="fragment">
+                         <img  height="300" data-src="images/lowryFEVTweet.PNG" alt="Lowry tweet">
+                    <p>tweeted by The Weather Channel's hurricane specialist</p>
+                    </div>
+
+                     <aside class="notes">
+                         <ul>
+                            <li>App was used immediately by the USGS Storm Team on their daily logistics calls to show the progress of work, location of deployments, and the gage levels</li>
+                            <li>Warmed my developer heart to see it in use by USGS top brass so immediately and to such great effect.</li>
+                            <li>Michael Lowry tweet</li>
+                            <li>Google analytics not turned on (consequence of rush to release)</li>
+                        <ul>
+                    </aside>
+                </section>f
+
+                 <section data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg">
+                    <h3>Success and Publicity</h3>
+                    <div>
+                         <img  height="350" data-src="images/news4jax.gif" alt="News 4 jax screenshot">
+                    </div>
+                    <p>featured on WJXT News 4 Jax in Jacksonville, FL</p>
+                     <aside class="notes">
+                         <ul>
+                            <li>News4Jax used FEV to monitor the storm surge at the Vilano Pier and inform their viewers of the nearly 7 foot peak surge</li>
+                        <ul>
+                    </aside>
+                </section>
+
+                <!-- <section data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg">
+                    <h2>Audience</h2>
+                    <p>used extensively by USGS personnel</p>
+                    <p class="fragment">designed with public in mind</p>
+                     <aside class="notes">
+                         <ul>
+                            <li>More USGS people than originally intended</li>
+                            <li>Still designed and improved with a public-first perspective</li>
+                        <ul>
+                    </aside>
+                </section> -->
+
+                <section data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg">
+                    <h2>Work in progress</h2>
+                    <p>still making improvements</p>
+                    <p class="fragment">UI/UX challenges</p>
+                    <p class="fragment">multi-event view is a UI challenge</p>
+                     <aside class="notes">
+                         <ul>
+                            <li>releasing improvements as they become available</li>
+                             <li>complaints: NWIS real-time gage layer takes too long to load (user probably at the wrong scale) </li>
+                            <li>challenges:Multi-event display without sacrifice of the user experience</li>              
+                        <ul>
+                    </aside>
+                </section>
+
+                <!-- <section data-background-image="images/usgs_waves_only_white_600w.gif" data-background-size="contain" data-state="dimbg">
+                    <h2>Conclusion</h2>
+                    <ul>
+                        <li >successful at its critical function</li>
+                        <li >room for improvement</li>
+                        <li >must avoid scope creep</li>
+                    </ul>
+                     <aside class="notes">
+                        It can improve, and it will, but we want to avoid scope creep and encourage people to develop applications on top of the services, or propose new ideas for WiM to develop
+                    </aside>   
+                </section> -->
+
+                <section data-background-image="images/USGSlogo_tag_white_600w.gif" data-background-size="contain" data-state="dimbg">
+                    <h1>Questions</h1>
+                    <div style="text-align: left">
+                         <p ><span style="font-size: larger"><a href="http://stn.wim.usgs.gov/fev"> stn.wim.usgs.gov/fev </a></span><br><span style="font-size: smaller; font-style: italic"> + #{event name} to link directly to event</span></p>
+
+                        <p style="font-size: smaller">Blake Draper, USGS Web Informatics and Mapping / <a href="mailto:bdraper@usgs.gov">bdraper@usgs.gov</a></p>
+                        <p style="font-size: smaller">Short-Term Network Questions: Marie Peppler, USGS Office of Surface Water / <a href="mailto:mpeppler@usgs.gov">mpeppler@usgs.gov</a></p>    
+                    </div>
+                    <img height="100" data-src="images/wim_hor_abbr_light.png" alt="WiM logo"  style="margin:30px;background:none;border:none;box-shadow:none;">
+                     <aside class="notes">
+                    </aside>
+                </section>
+
+            </div>
+        </div>
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+        <script>
+            Reveal.initialize({
+                // Display the page number of the current slide
+                slideNumber: true,
+                // Push each slide change to the browser history
+                history: true,
+                dependencies: [
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+            });
+        </script>
+    </body>
+</html>
